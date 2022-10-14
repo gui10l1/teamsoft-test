@@ -35,10 +35,10 @@ deve ser executado. Esta variável é **necessária** para que o projeto seja
 ## MONGODB_CONNECTION_URI
 
 Este projeto utilizou o banco de dados não relacional *MongoDB*. Sendo assim,
-para que seja estabilizado uma conexão para a manipulação dos dados uma URI de
+para que seja estabilizado uma conexão para a manipulação dos dados, uma URI de
 conexão é necessária para que seja possível fazer tal ação.
 
-Na URI informada é necessário informar *host*, *porta*, e *banco de dados* que
+Na URI é necessário informar *host*, *porta*, e *banco de dados* que
 serão utilizados pelo projeto. Existe um exemplo no arquivo `.env.example` na
 raíz do projeto.
 
@@ -50,9 +50,9 @@ informada.
 
 Existem dois valores possíveis para esta chave, que são: `sandbox` e `google`.
 
-Se o valor `sandbox` for informado, as informações para lat e lng da entidade de
+Se o valor `sandbox` for informado, as informações para latitude e longitude da entidade de
 endereço serão aleatórias, sendo assim impossível de buscar por informações
-verdadeiras uma vez que o provedor está em *sandbox*. Sendo assim, não preciso
+verdadeiras uma vez que o provedor está em *sandbox*, sendo assim, não preciso
 informar valor à última variável de ambiente, chamada de: `GOOGLE_MAPS_API_KEY`.
 
 Caso contrário, se a variável for populada com o valor `google`, a API utilizará
@@ -66,15 +66,15 @@ Como dito anteriormente, esta variável não é necessária, com base no que for
 informado em `LOCATION_PROVIDER`.
 
 Esta variável precisa ser populada com uma chave da API **Geocoding API** da
-Google. [Segue a documentação com as instruções de como receber uma](https://developers.google.com/maps/documentation/geocoding/overview#before-you-begin).
+Google. [Segue a documentação com as instruções de como receber uma.](https://developers.google.com/maps/documentation/geocoding/overview#before-you-begin)
 
 Com esta chave populada, em conjunto com a variável `LOCATION_PROVIDER` populada
-com `google`, as informações de lat e lng serão informadas de maneira correta e
+com `google`, as informações de latitude e longitude serão informadas de maneira correta e
 real.
 
 # Inicializando o projeto
 
-Para a inicialização do projeto, existe um comando a ser utilizad, que já está
+Para a inicialização do projeto, existe um comando a ser utilizado, que já está
 brevemente preparado para que execute uma instância do projeto.
 
 Esse comando é: `yarn dev` para inicar o projeto em ambiente de desenvolvimento
@@ -83,7 +83,7 @@ sendo possível assim, testar as funcionalidades que nele existem.
 # Rotas e Recursos
 
 Nessa seção será explicado um pouco das rotas da aplicação e dos recursos que
-são manipuladas por ela
+são manipuladas por ela.
 
 ## Clientes
 
@@ -97,7 +97,7 @@ Para iniciar, vamos falar sobre a primeira rota: **listagem de clientes**
 
 **Endpoint**: `${baseUrl}/clients`.
 
-Este endpoint irá retornar um *array* dos clientes cadastrados na base de dados.
+Este endpoint irá retornar um *array* com os clientes cadastrados na base de dados.
 
 ### [GET] Busca de clientes (/clients/{clientId})
 
@@ -107,7 +107,10 @@ Este endpoint carrega um parâmetro de rota, que deve ser populado com o id do
 cliente que se deseja buscar, caso não tenha o id, pode ser informado o CNPJ do
 cliente, a API irá se assegurar que faça uma busca com alguma dessas informações.
 
-Parâmetro | Descrição | Required
+Se o campo for popuolado com o CNPJ, é importante que seja colocado da **mesma forma**
+que foi inserido no banco de dados, para evitar maiores **conflitos**.
+
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 Id ou CNPJ do cliente | Parâmetro utilizado na filtragem do banco de dados em busca de um resultado | :heavy_check_mark:
 
@@ -116,10 +119,10 @@ Id ou CNPJ do cliente | Parâmetro utilizado na filtragem do banco de dados em b
 **Endpoint**: `${baseUrl}/clients`.
 
 Este endpoint leva a funcionalidade de se criar, e inserir no banco de dados um
-novo cliente, conforme os dados apresentados. Os dados devem ser enviados dentro
+novo cliente, conforme os dados enviados. Os dados devem ser enviados dentro
 do corpo da requisição, no formato `json`.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 document | CNPJ do cliente | :heavy_check_mark:
 socialReason | Razão social do cliente | :heavy_check_mark:
@@ -137,7 +140,7 @@ omitidos, sendo assim possível de fazer a atualização de 1 informação, ou
 múltiplas. As informações não obrigatórias **devem** ser informadas no corpo da
 requisição, em formato `json`.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 clientId | Este deve ser informado na rota, precisa necessariamente ser o id do cliente alvo | :heavy_check_mark:
 document | CNPJ do cliente para atualização | :x:
@@ -152,7 +155,7 @@ phone | Telefone do cliente para atualização | :x:
 Este endpoint carrega um parâmetro de rota, que deve ser populado com o id do
 cliente que se deseja deletar.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 Id do cliente | Parâmetro utilizado para a remoção do cliente | :heavy_check_mark:
 
@@ -166,17 +169,17 @@ na parte de clientes, ou seja, também é possível a *criação*, *leitura*,
 
 **Endpoint**: `${baseUrl}/addresses`.
 
-Este endpoint irá retornar um *array* dos endereços cadastrados na base de
+Este endpoint irá retornar um *array* com os endereços cadastrados na base de
 dados.
 
-### [GET] Busca de clientes (/addresses/{addressId})
+### [GET] Busca de endereços (/addresses/{addressId})
 
 **Endpoint**: `${baseUrl}/addresses/{addressId}`.
 
 Este endpoint carrega um parâmetro de rota, que deve ser populado com o id do
 endereço que se deseja buscar.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 Id do endereço | Parâmetro utilizado na filtragem do banco de dados em busca de um resultado | :heavy_check_mark:
 
@@ -185,10 +188,10 @@ Id do endereço | Parâmetro utilizado na filtragem do banco de dados em busca d
 **Endpoint**: `${baseUrl}/addresses`.
 
 Este endpoint leva a funcionalidade de se criar, e inserir no banco de dados um
-novo endereço, conforme os dados apresentados. Os dados devem ser enviados dentro
+novo endereço, conforme os dados inseridos. Os dados devem ser enviados dentro
 do corpo da requisição, no formato `json`.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 address | Logradouro do endereço, este será o parâmetro utilizado para a busca de latitude e longitude | :heavy_check_mark:
 number | Número do endereço | :heavy_check_mark:
@@ -213,7 +216,7 @@ omitidos, sendo assim possível de fazer a atualização de 1 informação, ou
 múltiplas. As informações não obrigatórias **devem** ser informadas no corpo da
 requisição, em formato `json`.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 addressId | Este deve ser informado na rota, precisa necessariamente ser o id do endereço alvo | :heavy_check_mark:
 address | Logradouro do endereço, este será o parâmetro utilizado para a busca de latitude e longitude | :x:
@@ -235,7 +238,7 @@ dentro do banco de dados, e aponta a qual cliente este endereço pertence.
 Este endpoint carrega um parâmetro de rota, que deve ser populado com o id do
 endereço que se deseja deletar.
 
-Parâmetro | Descrição | Required
+Parâmetro | Descrição | Obrigatório
 ---------------- | ----------- | --------
 Id do endereço | Parâmetro utilizado para a remoção do cliente | :heavy_check_mark:
 
