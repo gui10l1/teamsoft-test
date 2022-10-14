@@ -16,11 +16,11 @@ export default class ClientsController {
   }
 
   public async find(req: Request, res: Response): Promise<Response> {
-    const { clientId } = req.params;
+    const { clientIdOrDocument } = req.params;
 
     const service = container.resolve(FindClientsService);
 
-    const client = await service.execute({ clientId });
+    const client = await service.execute({ clientIdOrDocument });
 
     return res.json(client);
   }

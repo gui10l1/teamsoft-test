@@ -20,12 +20,12 @@ describe('FindClients', () => {
   it('should not be able to return non-existing clients', async () => {
     await expect(
       findClientsService.execute({
-        clientId: 'non-existing-id',
+        clientIdOrDocument: 'non-existing-id',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should be able to find clients', async () => {
+  it('should be able to find clients by id', async () => {
     const { _id } = await fakeClientsRepository.create({
       contactName: 'John Doe',
       document: '00000000000100',
@@ -34,7 +34,7 @@ describe('FindClients', () => {
     });
 
     const client = await findClientsService.execute({
-      clientId: _id.toString(),
+      clientIdOrDocument: _id.toString(),
     });
 
     expect(client._id.toString()).toBe(_id.toString());

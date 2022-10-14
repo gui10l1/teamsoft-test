@@ -5,7 +5,7 @@ import Client from "../infra/mongoose/entities/Client";
 import IClientsRepository from "../repositories/IClientsRepository";
 
 interface IRequest {
-  clientId: string;
+  clientIdOrDocument: string;
 }
 
 @injectable()
@@ -18,11 +18,15 @@ export default class FindClientsService {
     private addressesRepository: IAddressesRepository,
   ) {}
 
-  public async execute({ clientId }: IRequest): Promise<Client> {
-    const client = await this.clientsRepository.findById(clientId);
+  public async execute({ clientIdOrDocument }: IRequest): Promise<Client> {
+    let client = await this.clientsRepository.findByDocument(clientIdOrDocument);
 
     if (!client) {
-      throw new AppError('Client not found!');
+      client = await this.clientsRepository.findById(clientIdOrDocument);
+    }
+
+    if (!client) {
+      throw new AppError('Unable to find client with given information!');
     }
 
     const addresses = await this.addressesRepository.listByClientId(

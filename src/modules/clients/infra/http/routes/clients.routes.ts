@@ -7,10 +7,10 @@ const clientsController = new ClientsController();
 
 clientsRoutes.get('', clientsController.index);
 clientsRoutes.get(
-  '/:clientId',
+  '/:clientIdOrDocument',
   celebrate({
     [Segments.PARAMS]: {
-      clientId: Joi.string().required(),
+      clientIdOrDocument: Joi.string().required(),
     }
   }),
   clientsController.find
