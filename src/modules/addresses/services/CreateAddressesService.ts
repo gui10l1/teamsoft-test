@@ -2,7 +2,6 @@ import { inject, injectable } from "tsyringe";
 import AppError from "../../../shared/infra/http/errors/AppError";
 import ILocationProvider from "../../../shared/providers/LocationProvider/models/ILocationProvider";
 import IClientsRepository from "../../clients/repositories/IClientsRepository";
-// import AppError from "../../../shared/infra/http/errors/AppError";
 import IAddressesRepositoryDTO from "../dtos/IAddressesRepositoryDTO";
 import Address from "../infra/mongoose/entities/Address";
 import IAddressesRepository from "../repositories/IAddressesRepository";
