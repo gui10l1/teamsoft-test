@@ -47,7 +47,7 @@ export default class UpdateAddressesService {
 
       if (status === 'ZERO_RESULTS') {
         throw new AppError(
-          'Unable to find your geolocation information. Please, check your data and try again!'
+          'Unable to find your geolocation information. Please, check your data inside `address` field and try again!'
         );
       }
 

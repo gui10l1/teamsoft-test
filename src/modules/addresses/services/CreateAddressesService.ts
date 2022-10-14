@@ -32,7 +32,9 @@ export default class CreateAddressesService {
     const { results, status } = await this.locationProvider.getLocation(address);
 
     if (status === 'ZERO_RESULTS') {
-      throw new AppError('Unable to find your geolocation information. Please, check your data and try again!')
+      throw new AppError(
+        'Unable to find your geolocation information. Please, check your data inside `address` field and try again!'
+      );
     }
 
     const [addressFound] = results;
