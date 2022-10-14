@@ -7,6 +7,6 @@ export default interface IAddressesRepositoryDTO {
   state: string;
   postalCode: string;
   clientId: string;
-  lat: string;
-  long: string;
+  lat: number;
+  lng: number;
 }

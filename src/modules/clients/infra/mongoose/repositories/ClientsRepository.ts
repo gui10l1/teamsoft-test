@@ -47,7 +47,7 @@ export default class ClientsRepository implements IClientsRepository {
 
       return client;
     } catch {
-      throw new AppError('Parameter given is not valid!');
+      throw new AppError('Parameter given for `client id` is not valid!');
     }
   }
 

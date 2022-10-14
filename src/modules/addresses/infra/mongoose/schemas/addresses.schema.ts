@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Decimal128 } from 'mongodb';
 
 const addressesSchema = new mongoose.Schema(
   {
@@ -31,12 +32,12 @@ const addressesSchema = new mongoose.Schema(
       required: [true, 'postalCode_is_blank'],
     },
     lat: {
-      type: String,
+      type: Decimal128,
       required: [true, 'lat_is_blank'],
     },
-    long: {
-      type: String,
-      required: [true, 'long_is_blank'],
+    lng: {
+      type: Decimal128,
+      required: [true, 'lng_is_blank'],
     },
     client_id: {
       type: String,
@@ -51,5 +52,19 @@ const addressesSchema = new mongoose.Schema(
     }
   }
 );
+
+addressesSchema.set('toJSON', {
+  getters: true,
+  transform: (doc, ret) => {
+    if (ret.lat) {
+      ret.lat = Number(ret.lat);
+    }
+    if (ret.lng) {
+      ret.lng = Number(ret.lng);
+    }
+    delete ret.__v;
+    return ret;
+  },
+});
 
 export default addressesSchema;

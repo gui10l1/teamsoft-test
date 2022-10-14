@@ -22,14 +22,14 @@ describe('FindAddresses', () => {
   it('should be able to find addresses', async () => {
     const { _id } = await fakeAddressesRepository.create({
       address: 'Address',
-      city: 'City name',
-      lat: '9.001335844',
-      long: '-9.1485338596',
+      lat: 9.001335844,
+      lng: -9.1485338596,
       neighborhood: 'neighborhood',
       number: 'Address number',
       postalCode: '123445',
       state: 'State',
       clientId: '',
+      city: 'City'
     });
 
     const address = await findAddressesService.execute({

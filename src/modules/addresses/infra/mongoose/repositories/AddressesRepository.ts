@@ -22,7 +22,7 @@ export default class AddressesRepository implements IAddressesRepository {
       state: data.state,
       postal_code: data.postalCode,
       lat: data.lat,
-      long: data.long,
+      lng: data.lng,
       client_id: data.clientId,
     });
 
@@ -59,7 +59,7 @@ export default class AddressesRepository implements IAddressesRepository {
 
       return address;
     } catch {
-      throw new AppError('Parameter given is not valid!');
+      throw new AppError('Parameter given for `address id` is not valid!');
     }
   }
 
@@ -73,7 +73,7 @@ export default class AddressesRepository implements IAddressesRepository {
       state: data.state,
       postal_code: data.postalCode,
       lat: data.lat,
-      long: data.long,
+      lng: data.lng,
       client_id: data.clientId,
     });
 

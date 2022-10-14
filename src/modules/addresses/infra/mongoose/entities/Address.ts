@@ -19,9 +19,9 @@ export default class Address {
 
   client_id: string;
 
-  readonly lat: string;
+  readonly lat: number;
 
-  readonly long: string;
+  readonly lng: number;
 
   created_at: Date;
 

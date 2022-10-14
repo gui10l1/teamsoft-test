@@ -19,7 +19,7 @@ export default class FakeAddressesRepository implements IAddressesRepository {
       state: data.state,
       postal_code: data.postalCode,
       lat: data.lat,
-      long: data.long,
+      lng: data.lng,
       client_id: data.clientId,
       created_at: new Date(),
       updated_at: new Date(),
@@ -60,7 +60,7 @@ export default class FakeAddressesRepository implements IAddressesRepository {
       state: data.state,
       postal_code: data.postalCode,
       lat: data.lat,
-      long: data.long,
+      lng: data.lng,
       client_id: data.clientId,
       updated_at: new Date(),
     });

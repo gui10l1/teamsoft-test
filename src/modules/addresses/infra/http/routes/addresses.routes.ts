@@ -27,6 +27,7 @@ addressesRoutes.post(
       state: Joi.string().required(),
       postalCode: Joi.string().required(),
       complement: Joi.string().empty(''),
+      clientId: Joi.string().required(),
     }
   }),
   addressesController.create
@@ -46,6 +47,7 @@ addressesRoutes.put(
       state: Joi.string().empty(''),
       postalCode: Joi.string().empty(''),
       complement: Joi.string().empty(''),
+      clientId: Joi.string().empty(''),
     }
   }),
   addressesController.update

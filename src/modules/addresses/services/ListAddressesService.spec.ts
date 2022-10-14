@@ -14,8 +14,8 @@ describe('ListAddresses', () => {
     const addressOne = await fakeAddressesRepository.create({
       address: 'Address',
       city: 'City name',
-      lat: '9.001335844',
-      long: '-9.1485338596',
+      lat: 9.001335844,
+      lng: -9.1485338596,
       neighborhood: 'neighborhood',
       number: 'Address number',
       postalCode: '123445',
@@ -25,8 +25,8 @@ describe('ListAddresses', () => {
     const addressTwo = await fakeAddressesRepository.create({
       address: 'Address',
       city: 'City name',
-      lat: '9.001335844',
-      long: '-9.1485338596',
+      lat: 9.001335844,
+      lng: -9.1485338596,
       neighborhood: 'neighborhood',
       number: 'Address number',
       postalCode: '123445',
@@ -36,8 +36,8 @@ describe('ListAddresses', () => {
     const addressThree = await fakeAddressesRepository.create({
       address: 'Address',
       city: 'City name',
-      lat: '9.001335844',
-      long: '-9.1485338596',
+      lat: 9.001335844,
+      lng: -9.1485338596,
       neighborhood: 'neighborhood',
       number: 'Address number',
       postalCode: '123445',
@@ -47,8 +47,8 @@ describe('ListAddresses', () => {
     const addressFour = await fakeAddressesRepository.create({
       address: 'Address',
       city: 'City name',
-      lat: '9.001335844',
-      long: '-9.1485338596',
+      lat: 9.001335844,
+      lng: -9.1485338596,
       neighborhood: 'neighborhood',
       number: 'Address number',
       postalCode: '123445',
